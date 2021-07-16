@@ -32,8 +32,8 @@ class GradeSchoolNum():
         return(self.num - other.num)
 
 class KaratsubaNum(GradeSchoolNum):
-    a = ''
-    b = ''
+    a = '0'
+    b = '0'
 
     def __init__(self, num) -> None:
         super().__init__(num)
@@ -43,22 +43,34 @@ class KaratsubaNum(GradeSchoolNum):
         if half>0:
             self.a=self.text[0:half]
             self.b=self.text[half:self.n]
+        else:
+            self.b=self.text
     
     def __mul__(self, other):
-        # n must be power of 2
-        if self.n <= 1 or other.n <= 1:
-            return(GradeSchoolNum(str(self.num))*GradeSchoolNum(str(other.num)))
+        n = max(self.n, other.n)
+
+        if n < 2:
+            res=GradeSchoolNum(str(self.num))*GradeSchoolNum(str(other.num))
+            return KaratsubaNum( str(res) )
         
-        n = self.n
         a=KaratsubaNum(self.a)
         b=KaratsubaNum(self.b)
         c=KaratsubaNum(other.a)
         d=KaratsubaNum(other.b)
-        p=KaratsubaNum(str(a+b))
-        q=KaratsubaNum(str(c+d))
+        p=a+b
+        q=c+d
         ac=a*c
         bd=b*d
         pq=p*q
-        adbc=pq-ac-bd
+        adbc=pq.num-ac.num-bd.num
+        AC=ac.num * 10**n
+        ADBC=adbc * 10**(n//2)
+        BD = bd.num
+        return KaratsubaNum( str( AC + ADBC + BD ))
 
-        return (ac * 10**n) + (adbc * 10**(n//2)) + bd
+
+    def __add__(self, other): 
+        return KaratsubaNum(str(self.num + other.num))
+
+    def __sub__(self, other): 
+        return KaratsubaNum(str(self.num - other.num))

@@ -1,15 +1,18 @@
 from algorithms.Karatsuba import KaratsubaNum, GradeSchoolNum
 
 def main():
+    num1 = '8888'
+    num2 = '1344'
+
     #
     # ONLY WORKS with same n in x and y
     #
-    x=KaratsubaNum('1211')
-    y=KaratsubaNum('1111')
+    x=KaratsubaNum(num1)
+    y=KaratsubaNum(num2)
     res=x*y
-    print("Karatsuba: ",res)
-    x=GradeSchoolNum('1211')
-    y=GradeSchoolNum('1111')
+    print("Karatsuba: ",res.num)
+    x=GradeSchoolNum(num1)
+    y=GradeSchoolNum(num2)
     res=x*y
     print("GradeSchool: ",res)
 

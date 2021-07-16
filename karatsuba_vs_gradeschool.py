@@ -1,8 +1,8 @@
 from algorithms.Karatsuba import KaratsubaNum, GradeSchoolNum
 
 def main():
-    num1 = '8888'
-    num2 = '1344'
+    num1 = '5678'
+    num2 = '1234'
 
     #
     # ONLY WORKS with same n in x and y

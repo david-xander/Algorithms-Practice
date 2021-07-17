@@ -23,24 +23,20 @@ def merge_sort(data):
 
 def merge_ordered(L, R):
     res=[]
-    while len(L)>0:
-        while len(R)>0:
-            if L[0]<R[0]:
-                res.append(L[0])
-                L.pop(0)
-                break
-            else:
-                res.append(R[0])
-                R.pop(0)
-        if len(R)==0:
-            break
+    while len(L)>0 and len(R)>0:
+        if L[0]<R[0]:
+            res.append(L[0])
+            L.pop(0)
+        else:
+            res.append(R[0])
+            R.pop(0)
     
     for item in L:
         res.append(item)
     for item in R:
         res.append(item)
     
-    return res  
+    return res
 
 if __name__ == "__main__":
     # execute only if run as a script

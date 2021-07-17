@@ -1,4 +1,5 @@
-from algorithms.Karatsuba import KaratsubaNum, GradeSchoolNum
+from algorithms.Karatsuba import KaratsubaNum
+from algorithms.GradeSchool import GradeSchoolNum
 
 def main():
     num1 = '5678'

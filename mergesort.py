@@ -1,30 +1,46 @@
+import math
 
 def main():
-    data=[5,4,1,8,7,2,6,3]
-    print('MERGESORT ', data, ': ', mergesort(data))
+    data=[10, 5, 12, 4, 1, 8, 2, 11, 7, 9, 13, 3, 6, 14]
+    print('MERGESORT ', data, ': ', merge_sort(data))
 
 res = []
-def mergesort(data):
+def merge_sort(data):
     n=len(data)
     half=n//2
     
-    p1=data[0:half]
-    p2=data[half:n]
+    L=data[0:half]
+    R=data[half:n]
     
-    if len(p1) > 1:
-        mergesort(p1)
+    if len(L)>1:
+        L=merge_sort(L)
+    if len(R)>1:
+        R=merge_sort(R)    
 
-    if len(p2) > 1:
-        mergesort(p2)
-
-    if p1[0]<=p2[0]:
-        res.append(p1[0])
-        res.append(p2[0])
-    else:
-        res.append(p2[0])
-        res.append(p1[0])
+    res=merge_ordered(L,R)
 
     return res
+
+def merge_ordered(L, R):
+    res=[]
+    while len(L)>0:
+        while len(R)>0:
+            if L[0]<R[0]:
+                res.append(L[0])
+                L.pop(0)
+                break
+            else:
+                res.append(R[0])
+                R.pop(0)
+        if len(R)==0:
+            break
+    
+    for item in L:
+        res.append(item)
+    for item in R:
+        res.append(item)
+    
+    return res  
 
 if __name__ == "__main__":
     # execute only if run as a script

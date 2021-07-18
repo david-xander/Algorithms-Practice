@@ -26,10 +26,10 @@ def merge_ordered(L, R):
     while len(L)>0 and len(R)>0:
         if L[0]<R[0]:
             res.append(L[0])
-            L.pop(0)
+            L.pop(0) # Damm!!! I just realized pop(i) is O(n), so this is bad!!
         else:
             res.append(R[0])
-            R.pop(0)
+            R.pop(0) # Same!!! Shame on me!
     
     for item in L:
         res.append(item)
